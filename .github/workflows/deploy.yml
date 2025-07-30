@@ -1,0 +1,58 @@
+name: 🚀 Deploy to Google Cloud Run (Node.js with Cloud SQL & Firestore)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy Backend Services to Cloud Run
+    runs-on: ubuntu-latest
+
+    env:
+      PROJECT_ID: ${{ secrets.GCP_PROJECT }}
+      REGION: ${{ secrets.CLOUD_RUN_REGION }}
+      CLOUD_SQL_INSTANCE: ${{ secrets.CLOUD_SQL_CONNECTION }}
+      SQL_SERVICE_NAME: ${{ secrets.CLOUD_RUN_SQL_SERVICE }}
+      FIRESTORE_SERVICE_NAME: ${{ secrets.CLOUD_RUN_FIRESTORE_SERVICE }}
+
+    steps:
+      - name: 📦 Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: 🔑 Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: 🧰 Setup Google Cloud CLI
+        uses: google-github-actions/setup-gcloud@v1
+
+      - name: 📂 Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: 🚀 Deploy backend (Cloud SQL service)
+        working-directory: ./backend
+        run: |
+          gcloud run deploy $SQL_SERVICE_NAME \
+            --project=$PROJECT_ID \
+            --region=$REGION \
+            --source=. \
+            --platform=managed \
+            --allow-unauthenticated \
+            --set-env-vars=DB_USER=${{ secrets.DB_USER }},DB_PASS=${{ secrets.DB_PASS }},DB_NAME=${{ secrets.DB_NAME }},INSTANCE_CONNECTION_NAME=$CLOUD_SQL_INSTANCE \
+            --add-cloudsql-instances=$CLOUD_SQL_INSTANCE
+
+      - name: 🚀 Deploy backend-firestore (Firestore service)
+        working-directory: ./backend-firestore
+        run: |
+          gcloud run deploy $FIRESTORE_SERVICE_NAME \
+            --project=$PROJECT_ID \
+            --region=$REGION \
+            --source=. \
+            --platform=managed \
+            --allow-unauthenticated \
+            --set-env-vars=NODE_ENV=production
