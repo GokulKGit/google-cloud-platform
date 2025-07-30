@@ -2,15 +2,16 @@ const mysql = require("mysql2/promise");
 
 // Database configuration
 const dbConfig = {
-  host: process.env.DB_HOST || "34.58.174.59",
-  port: process.env.DB_PORT || 3306,
+  // host: process.env.DB_HOST || "34.58.174.59",
+  // port: process.env.DB_PORT || 3306,
   user: process.env.DB_USER || "gandh",
-  password: process.env.DB_PASSWORD || "Gokul@$07",
+  password: process.env.DB_PASSWORD || "",
   database: process.env.DB_NAME || "genworx",
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0,
-  charset: "utf8mb4",
+  // waitForConnections: true,
+  socketPath: `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME}`,
+  // connectionLimit: 10,
+  // queueLimit: 0,
+  // charset: "utf8mb4",
 };
 
 // Create connection pool
