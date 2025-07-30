@@ -1,0 +1,19 @@
+{
+  "name": "cloud-project",
+  "version": "1.0.0",
+  "description": "All cloud related like yaml, json, api etc..",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GokulKGit/google-cloud-platform.git"
+  },
+  "author": "Gokul K",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GokulKGit/google-cloud-platform/issues"
+  },
+  "homepage": "https://github.com/GokulKGit/google-cloud-platform#readme"
+}

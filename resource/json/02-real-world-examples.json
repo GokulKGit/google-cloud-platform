@@ -1,0 +1,232 @@
+{
+  "userProfile": {
+    "id": "user_123456",
+    "username": "johndoe2025",
+    "email": "john.doe@example.com",
+    "profile": {
+      "firstName": "John",
+      "lastName": "Doe",
+      "dateOfBirth": "1990-05-15",
+      "avatar": "https://example.com/avatars/johndoe.jpg",
+      "bio": "Software developer passionate about web technologies",
+      "location": {
+        "country": "United States",
+        "state": "California",
+        "city": "San Francisco",
+        "zipCode": "94102"
+      }
+    },
+    "preferences": {
+      "theme": "dark",
+      "language": "en-US",
+      "timezone": "America/Los_Angeles",
+      "emailNotifications": true,
+      "pushNotifications": false
+    },
+    "socialLinks": [
+      {
+        "platform": "twitter",
+        "url": "https://twitter.com/johndoe",
+        "verified": true
+      },
+      {
+        "platform": "linkedin",
+        "url": "https://linkedin.com/in/johndoe",
+        "verified": false
+      }
+    ],
+    "createdAt": "2023-01-15T08:30:00Z",
+    "lastLoginAt": "2025-07-25T14:22:30Z",
+    "isActive": true,
+    "roles": ["user", "premium"]
+  },
+
+  "ecommerceProduct": {
+    "id": "prod_789012",
+    "sku": "LAP-PRO-2025-001",
+    "name": "MacBook Pro 16-inch",
+    "description": "Powerful laptop for professionals with M3 chip",
+    "category": {
+      "id": "cat_001",
+      "name": "Laptops",
+      "parent": "Electronics"
+    },
+    "brand": "Apple",
+    "price": {
+      "currency": "USD",
+      "amount": 2499.0,
+      "originalPrice": 2699.0,
+      "discount": {
+        "type": "percentage",
+        "value": 7.4,
+        "endDate": "2025-08-01T23:59:59Z"
+      }
+    },
+    "specifications": {
+      "processor": "Apple M3 Pro",
+      "memory": "16GB",
+      "storage": "512GB SSD",
+      "display": "16.2-inch Liquid Retina XDR",
+      "graphics": "18-core GPU",
+      "weight": "2.1 kg",
+      "dimensions": {
+        "width": 35.57,
+        "height": 1.55,
+        "depth": 24.81,
+        "unit": "cm"
+      }
+    },
+    "inventory": {
+      "stock": 25,
+      "reserved": 3,
+      "available": 22,
+      "warehouse": "WH_SF_001"
+    },
+    "media": {
+      "images": [
+        {
+          "url": "https://example.com/images/macbook-main.jpg",
+          "alt": "MacBook Pro main view",
+          "type": "main"
+        },
+        {
+          "url": "https://example.com/images/macbook-side.jpg",
+          "alt": "MacBook Pro side view",
+          "type": "gallery"
+        }
+      ],
+      "videos": [
+        {
+          "url": "https://example.com/videos/macbook-demo.mp4",
+          "title": "MacBook Pro Demo",
+          "duration": 120
+        }
+      ]
+    },
+    "shipping": {
+      "weight": 2.5,
+      "dimensions": {
+        "length": 40,
+        "width": 30,
+        "height": 5,
+        "unit": "cm"
+      },
+      "freeShipping": true,
+      "estimatedDelivery": "3-5 business days"
+    },
+    "reviews": {
+      "averageRating": 4.8,
+      "totalReviews": 1247,
+      "ratingDistribution": {
+        "5": 956,
+        "4": 234,
+        "3": 45,
+        "2": 8,
+        "1": 4
+      }
+    },
+    "tags": ["laptop", "apple", "professional", "m3", "retina"],
+    "isActive": true,
+    "createdAt": "2025-01-10T09:15:00Z",
+    "updatedAt": "2025-07-20T16:45:00Z"
+  },
+
+  "weatherData": {
+    "location": {
+      "city": "San Francisco",
+      "state": "California",
+      "country": "United States",
+      "coordinates": {
+        "latitude": 37.7749,
+        "longitude": -122.4194
+      },
+      "timezone": "America/Los_Angeles"
+    },
+    "current": {
+      "timestamp": "2025-07-25T14:30:00Z",
+      "temperature": {
+        "celsius": 18,
+        "fahrenheit": 64
+      },
+      "humidity": 75,
+      "pressure": 1013.25,
+      "windSpeed": 12,
+      "windDirection": 230,
+      "visibility": 10,
+      "uvIndex": 3,
+      "condition": "partly_cloudy",
+      "description": "Partly cloudy with mild temperatures"
+    },
+    "forecast": [
+      {
+        "date": "2025-07-26",
+        "high": 22,
+        "low": 15,
+        "condition": "sunny",
+        "precipitationChance": 5,
+        "windSpeed": 8
+      },
+      {
+        "date": "2025-07-27",
+        "high": 24,
+        "low": 16,
+        "condition": "partly_cloudy",
+        "precipitationChance": 20,
+        "windSpeed": 10
+      },
+      {
+        "date": "2025-07-28",
+        "high": 21,
+        "low": 14,
+        "condition": "cloudy",
+        "precipitationChance": 60,
+        "windSpeed": 15
+      }
+    ],
+    "alerts": [
+      {
+        "type": "fog",
+        "severity": "minor",
+        "title": "Dense Fog Advisory",
+        "description": "Dense fog expected during morning hours",
+        "startTime": "2025-07-26T06:00:00Z",
+        "endTime": "2025-07-26T10:00:00Z"
+      }
+    ]
+  },
+
+  "bankTransaction": {
+    "transactionId": "txn_abc123def456",
+    "accountNumber": "****1234",
+    "type": "debit",
+    "amount": {
+      "value": 150.75,
+      "currency": "USD"
+    },
+    "description": "Online Purchase - Amazon",
+    "merchant": {
+      "name": "Amazon.com",
+      "category": "E-commerce",
+      "location": "Seattle, WA",
+      "merchantId": "AMZN_001"
+    },
+    "timestamp": "2025-07-25T10:45:30Z",
+    "status": "completed",
+    "balanceAfter": 2849.25,
+    "fees": {
+      "transactionFee": 0.0,
+      "foreignExchangeFee": 0.0
+    },
+    "paymentMethod": {
+      "type": "debit_card",
+      "lastFourDigits": "5678",
+      "network": "Visa"
+    },
+    "security": {
+      "authenticationMethod": "chip_and_pin",
+      "fraudScore": 0.1,
+      "verified": true
+    },
+    "reference": "REF789012345"
+  }
+}

@@ -1,0 +1,265 @@
+{
+  "title": "API Response Examples",
+  "description": "Common JSON structures used in REST APIs",
+
+  "successResponse": {
+    "status": "success",
+    "statusCode": 200,
+    "message": "Data retrieved successfully",
+    "data": {
+      "users": [
+        {
+          "id": 1,
+          "name": "John Doe",
+          "email": "john@example.com",
+          "createdAt": "2025-01-15T10:30:00Z"
+        },
+        {
+          "id": 2,
+          "name": "Jane Smith",
+          "email": "jane@example.com",
+          "createdAt": "2025-01-16T14:22:00Z"
+        }
+      ]
+    },
+    "meta": {
+      "total": 2,
+      "page": 1,
+      "limit": 10,
+      "totalPages": 1
+    },
+    "timestamp": "2025-07-25T15:30:00Z"
+  },
+
+  "errorResponse": {
+    "status": "error",
+    "statusCode": 400,
+    "message": "Validation failed",
+    "errors": [
+      {
+        "field": "email",
+        "code": "INVALID_FORMAT",
+        "message": "Email format is invalid"
+      },
+      {
+        "field": "age",
+        "code": "OUT_OF_RANGE",
+        "message": "Age must be between 18 and 100"
+      }
+    ],
+    "timestamp": "2025-07-25T15:30:00Z",
+    "requestId": "req_123456789"
+  },
+
+  "paginatedResponse": {
+    "status": "success",
+    "data": {
+      "items": [
+        {
+          "id": "prod_001",
+          "name": "Laptop",
+          "price": 999.99
+        },
+        {
+          "id": "prod_002",
+          "name": "Mouse",
+          "price": 29.99
+        }
+      ]
+    },
+    "pagination": {
+      "currentPage": 1,
+      "totalPages": 5,
+      "totalItems": 50,
+      "itemsPerPage": 10,
+      "hasNextPage": true,
+      "hasPrevPage": false,
+      "nextPage": 2,
+      "prevPage": null
+    },
+    "links": {
+      "self": "/api/products?page=1&limit=10",
+      "next": "/api/products?page=2&limit=10",
+      "prev": null,
+      "first": "/api/products?page=1&limit=10",
+      "last": "/api/products?page=5&limit=10"
+    }
+  },
+
+  "authResponse": {
+    "status": "success",
+    "message": "Login successful",
+    "data": {
+      "user": {
+        "id": "user_123",
+        "username": "johndoe",
+        "email": "john@example.com",
+        "roles": ["user", "admin"],
+        "lastLogin": "2025-07-25T15:30:00Z"
+      },
+      "tokens": {
+        "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+        "refreshToken": "dGhpcyBpcyBhIHJlZnJlc2ggdG9rZW4...",
+        "tokenType": "Bearer",
+        "expiresIn": 3600,
+        "expiresAt": "2025-07-25T16:30:00Z"
+      }
+    }
+  },
+
+  "restfulApiResponses": {
+    "GET_users": {
+      "method": "GET",
+      "endpoint": "/api/users",
+      "response": {
+        "data": [
+          {
+            "id": 1,
+            "name": "John Doe",
+            "email": "john@example.com"
+          }
+        ],
+        "count": 1
+      }
+    },
+
+    "POST_users": {
+      "method": "POST",
+      "endpoint": "/api/users",
+      "requestBody": {
+        "name": "New User",
+        "email": "newuser@example.com"
+      },
+      "response": {
+        "status": "created",
+        "statusCode": 201,
+        "data": {
+          "id": 3,
+          "name": "New User",
+          "email": "newuser@example.com",
+          "createdAt": "2025-07-25T15:30:00Z"
+        }
+      }
+    },
+
+    "PUT_users": {
+      "method": "PUT",
+      "endpoint": "/api/users/1",
+      "requestBody": {
+        "name": "Updated Name",
+        "email": "updated@example.com"
+      },
+      "response": {
+        "status": "success",
+        "data": {
+          "id": 1,
+          "name": "Updated Name",
+          "email": "updated@example.com",
+          "updatedAt": "2025-07-25T15:30:00Z"
+        }
+      }
+    },
+
+    "DELETE_users": {
+      "method": "DELETE",
+      "endpoint": "/api/users/1",
+      "response": {
+        "status": "success",
+        "message": "User deleted successfully",
+        "data": null
+      }
+    }
+  },
+
+  "microserviceResponses": {
+    "userService": {
+      "health": {
+        "service": "User Service",
+        "status": "healthy",
+        "timestamp": "2025-07-25T15:30:00Z",
+        "uptime": 86400,
+        "port": 3001,
+        "userCount": 150
+      },
+      "stats": {
+        "total": 150,
+        "active": 142,
+        "inactive": 8,
+        "byRole": {
+          "admin": 5,
+          "user": 145
+        },
+        "recentSignups": 12
+      }
+    },
+
+    "productService": {
+      "health": {
+        "service": "Product Service",
+        "status": "healthy",
+        "timestamp": "2025-07-25T15:30:00Z",
+        "uptime": 82800,
+        "port": 3002,
+        "productCount": 500,
+        "categories": ["Electronics", "Clothing", "Books"]
+      },
+      "categories": {
+        "categories": [
+          {
+            "name": "Electronics",
+            "count": 150,
+            "averagePrice": 299.99
+          },
+          {
+            "name": "Clothing",
+            "count": 200,
+            "averagePrice": 49.99
+          }
+        ],
+        "total": 2
+      }
+    },
+
+    "orderService": {
+      "health": {
+        "service": "Order Service",
+        "status": "healthy",
+        "timestamp": "2025-07-25T15:30:00Z",
+        "uptime": 79200,
+        "port": 3003,
+        "orderCount": 1250
+      },
+      "stats": {
+        "total": 1250,
+        "totalRevenue": 125430.5,
+        "averageOrderValue": 100.34,
+        "statusBreakdown": {
+          "pending": 25,
+          "confirmed": 150,
+          "processing": 300,
+          "shipped": 500,
+          "delivered": 270,
+          "cancelled": 5
+        }
+      }
+    }
+  },
+
+  "webhookPayload": {
+    "event": "user.created",
+    "timestamp": "2025-07-25T15:30:00Z",
+    "data": {
+      "user": {
+        "id": "user_789",
+        "email": "newuser@example.com",
+        "name": "New User"
+      }
+    },
+    "metadata": {
+      "source": "registration_form",
+      "ip": "192.168.1.100",
+      "userAgent": "Mozilla/5.0..."
+    },
+    "signature": "sha256=abc123def456..."
+  }
+}

@@ -1,0 +1,322 @@
+{
+  "title": "JSON Tools and Utilities",
+  "description": "Comprehensive guide to JSON tools, validators, formatters, and utilities",
+
+  "onlineTools": {
+    "validators": [
+      {
+        "name": "JSONLint",
+        "url": "https://jsonlint.com/",
+        "description": "Popular JSON validator and formatter",
+        "features": ["Validation", "Formatting", "Error highlighting"]
+      },
+      {
+        "name": "JSON Formatter",
+        "url": "https://jsonformatter.curiousconcept.com/",
+        "description": "Validate and format JSON data",
+        "features": ["Validation", "Pretty printing", "Minification"]
+      },
+      {
+        "name": "JSON Schema Validator",
+        "url": "https://www.jsonschemavalidator.net/",
+        "description": "Validate JSON against JSON Schema",
+        "features": ["Schema validation", "Error reporting", "Examples"]
+      }
+    ],
+    "formatters": [
+      {
+        "name": "JSON Pretty Print",
+        "description": "Format JSON with proper indentation",
+        "example": "Input: {\"name\":\"John\",\"age\":30}\nOutput: {\n  \"name\": \"John\",\n  \"age\": 30\n}"
+      },
+      {
+        "name": "JSON Minifier",
+        "description": "Remove whitespace to reduce file size",
+        "example": "Input: {\n  \"name\": \"John\",\n  \"age\": 30\n}\nOutput: {\"name\":\"John\",\"age\":30}"
+      }
+    ],
+    "converters": [
+      {
+        "name": "JSON to CSV",
+        "description": "Convert JSON array to CSV format",
+        "useCase": "Exporting data for spreadsheets"
+      },
+      {
+        "name": "JSON to XML",
+        "description": "Convert JSON to XML format",
+        "useCase": "Legacy system integration"
+      },
+      {
+        "name": "JSON to YAML",
+        "description": "Convert JSON to YAML format",
+        "useCase": "Configuration files"
+      }
+    ]
+  },
+
+  "commandLineTools": {
+    "jq": {
+      "description": "Lightweight and flexible command-line JSON processor",
+      "installation": {
+        "linux": "sudo apt-get install jq",
+        "macos": "brew install jq",
+        "windows": "Download from https://stedolan.github.io/jq/"
+      },
+      "examples": [
+        {
+          "description": "Pretty print JSON",
+          "command": "cat data.json | jq .",
+          "input": "{\"name\":\"John\",\"age\":30}",
+          "output": "{\n  \"name\": \"John\",\n  \"age\": 30\n}"
+        },
+        {
+          "description": "Extract specific field",
+          "command": "cat users.json | jq '.[] | .name'",
+          "input": "[{\"name\":\"John\",\"age\":30},{\"name\":\"Jane\",\"age\":25}]",
+          "output": "\"John\"\n\"Jane\""
+        },
+        {
+          "description": "Filter by condition",
+          "command": "cat users.json | jq '.[] | select(.age > 25)'",
+          "input": "[{\"name\":\"John\",\"age\":30},{\"name\":\"Jane\",\"age\":25}]",
+          "output": "{\n  \"name\": \"John\",\n  \"age\": 30\n}"
+        },
+        {
+          "description": "Transform data",
+          "command": "cat users.json | jq '[.[] | {username: .name, years: .age}]'",
+          "input": "[{\"name\":\"John\",\"age\":30}]",
+          "output": "[{\n  \"username\": \"John\",\n  \"years\": 30\n}]"
+        }
+      ]
+    },
+    "python_json_tool": {
+      "description": "Built-in Python JSON tool",
+      "usage": "python -m json.tool",
+      "examples": [
+        {
+          "description": "Pretty print JSON file",
+          "command": "python -m json.tool data.json",
+          "purpose": "Format and validate JSON"
+        },
+        {
+          "description": "Validate JSON from stdin",
+          "command": "echo '{\"name\":\"John\"}' | python -m json.tool",
+          "purpose": "Quick validation and formatting"
+        }
+      ]
+    }
+  },
+
+  "programmingTools": {
+    "nodeJs": {
+      "packages": [
+        {
+          "name": "jsonlint",
+          "installation": "npm install -g jsonlint",
+          "usage": "jsonlint data.json",
+          "description": "JSON syntax validator"
+        },
+        {
+          "name": "json-server",
+          "installation": "npm install -g json-server",
+          "usage": "json-server --watch db.json",
+          "description": "Create a REST API from JSON file"
+        },
+        {
+          "name": "fx",
+          "installation": "npm install -g fx",
+          "usage": "fx data.json",
+          "description": "Interactive JSON viewer and processor"
+        }
+      ]
+    },
+    "python": {
+      "packages": [
+        {
+          "name": "jsonschema",
+          "installation": "pip install jsonschema",
+          "description": "JSON Schema validation library",
+          "example": "from jsonschema import validate\nvalidate(instance, schema)"
+        },
+        {
+          "name": "ujson",
+          "installation": "pip install ujson",
+          "description": "Ultra fast JSON encoder/decoder",
+          "example": "import ujson\ndata = ujson.loads(json_string)"
+        }
+      ]
+    }
+  },
+
+  "vscodeExtensions": {
+    "recommended": [
+      {
+        "name": "JSON Tools",
+        "id": "eriklynd.json-tools",
+        "features": ["Pretty print", "Minify", "Sort", "Validate"]
+      },
+      {
+        "name": "JSON Schema",
+        "id": "DavidAnson.vscode-json-schema",
+        "features": [
+          "Schema validation",
+          "Auto-completion",
+          "Error highlighting"
+        ]
+      },
+      {
+        "name": "Auto Rename Tag",
+        "id": "formulahendry.auto-rename-tag",
+        "features": ["Bracket matching", "Auto-completion"]
+      }
+    ]
+  },
+
+  "browserDevTools": {
+    "chrome": {
+      "console": {
+        "description": "Use browser console for JSON operations",
+        "examples": [
+          "JSON.parse('{\"name\":\"John\"}')",
+          "JSON.stringify({name: 'John'}, null, 2)",
+          "console.table(jsonArray) // Display JSON array as table"
+        ]
+      },
+      "network": {
+        "description": "Inspect JSON API responses",
+        "steps": [
+          "Open Developer Tools (F12)",
+          "Go to Network tab",
+          "Make API request",
+          "Click on request to see JSON response"
+        ]
+      }
+    },
+    "firefox": {
+      "jsonViewer": {
+        "description": "Built-in JSON viewer for JSON responses",
+        "features": ["Syntax highlighting", "Collapsible nodes", "Search"]
+      }
+    }
+  },
+
+  "testingTools": {
+    "postman": {
+      "description": "API testing tool with JSON support",
+      "features": [
+        "Send JSON requests",
+        "Validate JSON responses",
+        "JSON schema validation",
+        "Environment variables with JSON"
+      ],
+      "example": {
+        "request": {
+          "method": "POST",
+          "url": "https://api.example.com/users",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "body": {
+            "name": "John Doe",
+            "email": "john@example.com"
+          }
+        }
+      }
+    },
+    "insomnia": {
+      "description": "REST API client with JSON support",
+      "features": [
+        "JSON formatting",
+        "Schema validation",
+        "Template variables",
+        "Code generation"
+      ]
+    }
+  },
+
+  "buildTools": {
+    "webpack": {
+      "description": "Handle JSON files in webpack builds",
+      "configuration": {
+        "module": {
+          "rules": [
+            {
+              "test": "\\.json$",
+              "type": "json"
+            }
+          ]
+        }
+      },
+      "usage": "import data from './data.json';"
+    },
+    "rollup": {
+      "description": "Bundle JSON files with Rollup",
+      "plugin": "@rollup/plugin-json",
+      "configuration": {
+        "plugins": ["json()"],
+        "usage": "import data from './data.json';"
+      }
+    }
+  },
+
+  "performanceTools": {
+    "benchmarking": {
+      "description": "Tools to measure JSON parsing performance",
+      "tools": [
+        {
+          "name": "JSON Parse Benchmark",
+          "description": "Compare different JSON parsers",
+          "example": "console.time('parse');\nJSON.parse(largeJsonString);\nconsole.timeEnd('parse');"
+        }
+      ]
+    },
+    "profiling": {
+      "description": "Profile JSON operations",
+      "chrome": "Use Chrome DevTools Performance tab",
+      "node": "Use --prof flag with Node.js"
+    }
+  },
+
+  "utilityScripts": {
+    "jsonPrettifier": {
+      "description": "Script to format JSON files",
+      "javascript": "const fs = require('fs');\nconst data = JSON.parse(fs.readFileSync('input.json'));\nfs.writeFileSync('output.json', JSON.stringify(data, null, 2));",
+      "python": "import json\nwith open('input.json') as f:\n    data = json.load(f)\nwith open('output.json', 'w') as f:\n    json.dump(data, f, indent=2)"
+    },
+    "jsonValidator": {
+      "description": "Script to validate multiple JSON files",
+      "javascript": "const fs = require('fs');\nconst files = ['file1.json', 'file2.json'];\nfiles.forEach(file => {\n    try {\n        JSON.parse(fs.readFileSync(file));\n        console.log(`✓ ${file} is valid`);\n    } catch (e) {\n        console.log(`✗ ${file} is invalid: ${e.message}`);\n    }\n});"
+    },
+    "jsonMerger": {
+      "description": "Script to merge multiple JSON files",
+      "javascript": "const fs = require('fs');\nconst files = ['config1.json', 'config2.json'];\nconst merged = {};\nfiles.forEach(file => {\n    Object.assign(merged, JSON.parse(fs.readFileSync(file)));\n});\nfs.writeFileSync('merged.json', JSON.stringify(merged, null, 2));"
+    }
+  },
+
+  "tips": {
+    "validation": [
+      "Always validate JSON before processing",
+      "Use schema validation for complex data",
+      "Check for required fields",
+      "Validate data types"
+    ],
+    "performance": [
+      "Use streaming parsers for large files",
+      "Cache parsed JSON when possible",
+      "Consider binary formats for large datasets",
+      "Minimize JSON size by removing unnecessary whitespace"
+    ],
+    "debugging": [
+      "Use pretty print for better readability",
+      "Check for common syntax errors (trailing commas, quotes)",
+      "Use browser dev tools for API debugging",
+      "Log JSON data step by step"
+    ],
+    "security": [
+      "Validate input data",
+      "Sanitize user input",
+      "Use HTTPS for JSON APIs",
+      "Implement proper authentication"
+    ]
+  }
+}

@@ -1,0 +1,411 @@
+{
+  "title": "Complex Nested JSON Structures",
+  "description": "Advanced JSON patterns for complex applications",
+
+  "organizationStructure": {
+    "company": {
+      "id": "comp_001",
+      "name": "TechCorp Solutions",
+      "founded": "2015-03-15",
+      "headquarters": {
+        "address": {
+          "street": "123 Innovation Drive",
+          "suite": "Suite 500",
+          "city": "San Francisco",
+          "state": "California",
+          "country": "United States",
+          "zipCode": "94105",
+          "coordinates": {
+            "latitude": 37.7749,
+            "longitude": -122.4194
+          }
+        },
+        "contact": {
+          "phone": "+1-555-0123",
+          "email": "info@techcorp.com",
+          "website": "https://techcorp.com"
+        }
+      },
+      "departments": [
+        {
+          "id": "dept_eng",
+          "name": "Engineering",
+          "budget": 2500000,
+          "manager": {
+            "employeeId": "emp_001",
+            "name": "Sarah Johnson",
+            "email": "sarah.johnson@techcorp.com",
+            "hire_date": "2018-06-01"
+          },
+          "teams": [
+            {
+              "id": "team_frontend",
+              "name": "Frontend Development",
+              "lead": {
+                "employeeId": "emp_005",
+                "name": "Mike Chen",
+                "email": "mike.chen@techcorp.com"
+              },
+              "members": [
+                {
+                  "employeeId": "emp_010",
+                  "name": "Alice Rodriguez",
+                  "role": "Senior Frontend Developer",
+                  "skills": ["React", "TypeScript", "CSS", "Angular"],
+                  "experience": 5,
+                  "projects": [
+                    {
+                      "id": "proj_001",
+                      "name": "E-commerce Platform",
+                      "role": "Lead Developer",
+                      "status": "active",
+                      "technologies": ["React", "Redux", "TypeScript"]
+                    }
+                  ]
+                },
+                {
+                  "employeeId": "emp_011",
+                  "name": "David Park",
+                  "role": "Frontend Developer",
+                  "skills": ["Vue.js", "JavaScript", "SCSS"],
+                  "experience": 3,
+                  "projects": [
+                    {
+                      "id": "proj_002",
+                      "name": "Admin Dashboard",
+                      "role": "Developer",
+                      "status": "completed"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "team_backend",
+              "name": "Backend Development",
+              "lead": {
+                "employeeId": "emp_006",
+                "name": "Lisa Thompson"
+              },
+              "members": [
+                {
+                  "employeeId": "emp_012",
+                  "name": "James Wilson",
+                  "role": "Senior Backend Developer",
+                  "skills": ["Node.js", "Python", "PostgreSQL", "AWS"],
+                  "experience": 7
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dept_sales",
+          "name": "Sales & Marketing",
+          "budget": 1200000,
+          "manager": {
+            "employeeId": "emp_002",
+            "name": "Robert Kim",
+            "email": "robert.kim@techcorp.com"
+          },
+          "regions": [
+            {
+              "name": "North America",
+              "salesReps": [
+                {
+                  "employeeId": "emp_020",
+                  "name": "Jennifer Adams",
+                  "territory": "West Coast",
+                  "quota": 500000,
+                  "achieved": 425000
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "products": [
+        {
+          "id": "prod_saas_001",
+          "name": "CloudSync Pro",
+          "type": "SaaS",
+          "pricing": {
+            "tiers": [
+              {
+                "name": "Basic",
+                "monthlyPrice": 29.99,
+                "yearlyPrice": 299.99,
+                "features": ["Up to 5 users", "10GB storage", "Email support"],
+                "limits": {
+                  "users": 5,
+                  "storage": "10GB",
+                  "apiCalls": 1000
+                }
+              },
+              {
+                "name": "Professional",
+                "monthlyPrice": 79.99,
+                "yearlyPrice": 799.99,
+                "features": [
+                  "Up to 25 users",
+                  "100GB storage",
+                  "Priority support",
+                  "Advanced analytics"
+                ],
+                "limits": {
+                  "users": 25,
+                  "storage": "100GB",
+                  "apiCalls": 10000
+                }
+              }
+            ]
+          },
+          "integrations": [
+            {
+              "name": "Slack",
+              "type": "communication",
+              "apiVersion": "v2",
+              "authentication": "OAuth2"
+            },
+            {
+              "name": "Google Drive",
+              "type": "storage",
+              "apiVersion": "v3",
+              "authentication": "OAuth2"
+            }
+          ]
+        }
+      ],
+      "financials": {
+        "fiscal_year": 2025,
+        "quarters": [
+          {
+            "quarter": "Q1",
+            "revenue": 2750000,
+            "expenses": 2100000,
+            "profit": 650000,
+            "breakdown": {
+              "subscription_revenue": 2200000,
+              "consulting_revenue": 550000,
+              "employee_costs": 1400000,
+              "infrastructure_costs": 350000,
+              "marketing_costs": 350000
+            }
+          }
+        ]
+      }
+    }
+  },
+
+  "socialMediaPlatform": {
+    "platform": "SocialHub",
+    "user": {
+      "id": "user_789456",
+      "username": "tech_enthusiast_2025",
+      "profile": {
+        "displayName": "Alex Tech",
+        "bio": "Software developer, tech blogger, and coffee lover ☕",
+        "avatar": "https://cdn.socialhub.com/avatars/user_789456.jpg",
+        "coverPhoto": "https://cdn.socialhub.com/covers/user_789456.jpg",
+        "location": "San Francisco, CA",
+        "website": "https://alextech.blog",
+        "verified": true,
+        "stats": {
+          "followers": 15420,
+          "following": 1250,
+          "posts": 3847,
+          "likes_received": 125000
+        }
+      },
+      "timeline": [
+        {
+          "id": "post_abc123",
+          "type": "text",
+          "content": "Just deployed my first microservices architecture! 🚀 #coding #microservices",
+          "timestamp": "2025-07-25T14:30:00Z",
+          "visibility": "public",
+          "engagement": {
+            "likes": 245,
+            "shares": 18,
+            "comments": 23,
+            "views": 3420
+          },
+          "hashtags": ["coding", "microservices"],
+          "mentions": [
+            {
+              "username": "dev_mentor",
+              "userId": "user_456789"
+            }
+          ],
+          "comments": [
+            {
+              "id": "comment_001",
+              "userId": "user_111222",
+              "username": "sarah_dev",
+              "content": "Awesome work! How did you handle service discovery?",
+              "timestamp": "2025-07-25T14:45:00Z",
+              "likes": 12,
+              "replies": [
+                {
+                  "id": "reply_001",
+                  "userId": "user_789456",
+                  "username": "tech_enthusiast_2025",
+                  "content": "Used a simple service registry pattern with health checks!",
+                  "timestamp": "2025-07-25T15:00:00Z",
+                  "likes": 8
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "post_def456",
+          "type": "image",
+          "content": "My development setup for 2025 💻",
+          "timestamp": "2025-07-24T10:15:00Z",
+          "media": {
+            "images": [
+              {
+                "url": "https://cdn.socialhub.com/posts/post_def456_1.jpg",
+                "alt": "Developer workspace with multiple monitors",
+                "dimensions": {
+                  "width": 1920,
+                  "height": 1080
+                }
+              }
+            ]
+          },
+          "engagement": {
+            "likes": 892,
+            "shares": 156,
+            "comments": 89,
+            "saves": 234
+          }
+        }
+      ],
+      "connections": {
+        "followers": [
+          {
+            "userId": "user_333444",
+            "username": "coding_newbie",
+            "followedAt": "2025-07-20T09:30:00Z",
+            "notifications": true
+          }
+        ],
+        "following": [
+          {
+            "userId": "user_555666",
+            "username": "tech_leader",
+            "followedAt": "2025-01-15T12:00:00Z",
+            "category": "professional"
+          }
+        ]
+      }
+    }
+  },
+
+  "gamingPlatform": {
+    "game": {
+      "id": "game_mmorpg_001",
+      "title": "Fantasy Realms Online",
+      "version": "2.4.1",
+      "servers": [
+        {
+          "id": "server_us_east_01",
+          "name": "Dragon's Keep",
+          "region": "US East",
+          "capacity": 5000,
+          "current_players": 3247,
+          "status": "online"
+        }
+      ],
+      "player": {
+        "id": "player_987654",
+        "username": "ShadowHunter92",
+        "level": 67,
+        "experience": 2847593,
+        "class": "Rogue",
+        "stats": {
+          "strength": 28,
+          "dexterity": 85,
+          "intelligence": 42,
+          "constitution": 55,
+          "wisdom": 38,
+          "charisma": 31
+        },
+        "inventory": {
+          "slots": 50,
+          "items": [
+            {
+              "id": "item_sword_001",
+              "name": "Shadowbane Dagger",
+              "type": "weapon",
+              "rarity": "legendary",
+              "level": 65,
+              "stats": {
+                "damage": "125-185",
+                "criticalChance": 15,
+                "speed": 1.8
+              },
+              "enchantments": [
+                {
+                  "name": "Shadow Strike",
+                  "effect": "+20% damage in darkness",
+                  "level": 3
+                }
+              ],
+              "quantity": 1,
+              "durability": {
+                "current": 98,
+                "maximum": 100
+              }
+            },
+            {
+              "id": "item_potion_001",
+              "name": "Greater Health Potion",
+              "type": "consumable",
+              "effect": "Restores 500 HP",
+              "quantity": 15,
+              "stackable": true
+            }
+          ]
+        },
+        "guilds": [
+          {
+            "id": "guild_001",
+            "name": "Shadow Assassins",
+            "role": "Officer",
+            "joinedAt": "2024-12-15T18:30:00Z",
+            "members": 125,
+            "level": 15
+          }
+        ],
+        "achievements": [
+          {
+            "id": "achievement_001",
+            "name": "Dragon Slayer",
+            "description": "Defeat 100 dragons",
+            "progress": {
+              "current": 100,
+              "required": 100
+            },
+            "completedAt": "2025-07-10T14:22:00Z",
+            "reward": {
+              "experience": 50000,
+              "items": ["Dragon Scale Armor"]
+            }
+          }
+        ],
+        "friends": [
+          {
+            "playerId": "player_123456",
+            "username": "MagicMaster88",
+            "status": "online",
+            "location": "Enchanted Forest",
+            "addedAt": "2025-05-20T10:15:00Z"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,377 @@
+{
+  "title": "JSON Practice Exercises",
+  "description": "Hands-on exercises to master JSON",
+
+  "exercise1": {
+    "title": "Basic JSON Creation",
+    "difficulty": "Beginner",
+    "task": "Create a JSON object representing a book with title, author, pages, published year, and availability status",
+    "example_solution": {
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "pages": 180,
+      "publishedYear": 1925,
+      "isAvailable": true,
+      "genres": ["Fiction", "Classic", "American Literature"],
+      "isbn": "978-0-7432-7356-5"
+    }
+  },
+
+  "exercise2": {
+    "title": "Student Grade System",
+    "difficulty": "Beginner",
+    "task": "Create a JSON structure for a student with personal info and grades for different subjects",
+    "example_solution": {
+      "studentId": "STU001",
+      "personalInfo": {
+        "firstName": "Emma",
+        "lastName": "Wilson",
+        "age": 20,
+        "email": "emma.wilson@university.edu"
+      },
+      "grades": {
+        "mathematics": {
+          "midterm": 85,
+          "final": 92,
+          "assignments": [88, 90, 85, 95],
+          "overall": "A-"
+        },
+        "physics": {
+          "midterm": 78,
+          "final": 84,
+          "assignments": [80, 82, 79, 88],
+          "overall": "B+"
+        },
+        "chemistry": {
+          "midterm": 90,
+          "final": 88,
+          "assignments": [92, 89, 94, 87],
+          "overall": "A-"
+        }
+      },
+      "gpa": 3.7,
+      "semester": "Fall 2025"
+    }
+  },
+
+  "exercise3": {
+    "title": "Restaurant Menu",
+    "difficulty": "Intermediate",
+    "task": "Design a JSON structure for a restaurant menu with categories, items, prices, and dietary information",
+    "example_solution": {
+      "restaurant": {
+        "name": "Bella Vista",
+        "cuisine": "Italian",
+        "location": "Downtown"
+      },
+      "menu": {
+        "appetizers": [
+          {
+            "id": "app001",
+            "name": "Bruschetta",
+            "description": "Grilled bread topped with tomatoes, garlic, and basil",
+            "price": 8.99,
+            "dietary": ["vegetarian"],
+            "spiceLevel": 0,
+            "preparationTime": 10
+          },
+          {
+            "id": "app002",
+            "name": "Calamari Rings",
+            "description": "Fresh squid rings served with marinara sauce",
+            "price": 12.99,
+            "dietary": [],
+            "allergens": ["seafood"],
+            "spiceLevel": 1,
+            "preparationTime": 15
+          }
+        ],
+        "mains": [
+          {
+            "id": "main001",
+            "name": "Margherita Pizza",
+            "description": "Traditional pizza with tomato sauce, mozzarella, and fresh basil",
+            "price": 16.99,
+            "dietary": ["vegetarian"],
+            "size": "12 inch",
+            "customizations": {
+              "extraToppings": ["pepperoni", "mushrooms", "olives"],
+              "crustOptions": ["thin", "thick", "gluten-free"]
+            },
+            "preparationTime": 20
+          }
+        ],
+        "desserts": [
+          {
+            "id": "des001",
+            "name": "Tiramisu",
+            "description": "Classic Italian dessert with coffee-soaked ladyfingers",
+            "price": 7.99,
+            "dietary": ["vegetarian"],
+            "allergens": ["eggs", "dairy"],
+            "preparationTime": 5
+          }
+        ]
+      },
+      "specialOffers": [
+        {
+          "name": "Happy Hour",
+          "description": "20% off appetizers",
+          "validDays": ["Monday", "Tuesday", "Wednesday"],
+          "timeRange": "15:00-18:00",
+          "discount": 20
+        }
+      ]
+    }
+  },
+
+  "exercise4": {
+    "title": "Social Media Post",
+    "difficulty": "Intermediate",
+    "task": "Create a JSON structure for a social media post with user info, content, engagement metrics, and comments",
+    "example_solution": {
+      "postId": "post_789012",
+      "user": {
+        "userId": "user_456",
+        "username": "traveler_jane",
+        "displayName": "Jane Adventures",
+        "avatar": "https://example.com/avatars/jane.jpg",
+        "verified": false,
+        "followers": 15420
+      },
+      "content": {
+        "text": "Just witnessed the most amazing sunset in Santorini! 🌅 #travel #sunset #greece",
+        "media": [
+          {
+            "type": "image",
+            "url": "https://example.com/images/santorini_sunset.jpg",
+            "alt": "Beautiful sunset over Santorini",
+            "dimensions": {
+              "width": 1920,
+              "height": 1080
+            }
+          }
+        ],
+        "hashtags": ["travel", "sunset", "greece"],
+        "mentions": [],
+        "location": {
+          "name": "Santorini, Greece",
+          "coordinates": {
+            "latitude": 36.3932,
+            "longitude": 25.4615
+          }
+        }
+      },
+      "engagement": {
+        "likes": 1247,
+        "shares": 89,
+        "comments": 156,
+        "saves": 234,
+        "views": 8920
+      },
+      "comments": [
+        {
+          "commentId": "comment_001",
+          "user": {
+            "userId": "user_789",
+            "username": "photography_pro",
+            "displayName": "PhotoPro"
+          },
+          "text": "Absolutely stunning! What camera did you use?",
+          "timestamp": "2025-07-25T16:45:00Z",
+          "likes": 23,
+          "replies": [
+            {
+              "replyId": "reply_001",
+              "user": {
+                "userId": "user_456",
+                "username": "traveler_jane"
+              },
+              "text": "Thanks! Shot with my Canon EOS R5 📸",
+              "timestamp": "2025-07-25T17:00:00Z",
+              "likes": 12
+            }
+          ]
+        }
+      ],
+      "timestamp": "2025-07-25T15:30:00Z",
+      "privacy": "public",
+      "allowComments": true,
+      "allowShares": true
+    }
+  },
+
+  "exercise5": {
+    "title": "E-commerce Order",
+    "difficulty": "Advanced",
+    "task": "Design a complete e-commerce order JSON with customer, items, shipping, payment, and tracking information",
+    "example_solution": {
+      "orderId": "ORD-2025-789012",
+      "orderNumber": "ORD789012",
+      "customer": {
+        "customerId": "CUST456789",
+        "email": "john.smith@email.com",
+        "name": {
+          "first": "John",
+          "last": "Smith"
+        },
+        "phone": "+1-555-0123"
+      },
+      "billingAddress": {
+        "street": "123 Main Street",
+        "apartment": "Apt 4B",
+        "city": "New York",
+        "state": "NY",
+        "zipCode": "10001",
+        "country": "United States"
+      },
+      "shippingAddress": {
+        "street": "456 Oak Avenue",
+        "city": "Brooklyn",
+        "state": "NY",
+        "zipCode": "11201",
+        "country": "United States"
+      },
+      "items": [
+        {
+          "productId": "PROD001",
+          "sku": "LAP-PRO-001",
+          "name": "Professional Laptop",
+          "quantity": 1,
+          "unitPrice": 1299.99,
+          "totalPrice": 1299.99,
+          "category": "Electronics",
+          "customizations": {
+            "ram": "16GB",
+            "storage": "512GB SSD"
+          }
+        },
+        {
+          "productId": "PROD002",
+          "sku": "MOUSE-001",
+          "name": "Wireless Mouse",
+          "quantity": 2,
+          "unitPrice": 29.99,
+          "totalPrice": 59.98,
+          "category": "Accessories"
+        }
+      ],
+      "pricing": {
+        "subtotal": 1359.97,
+        "shipping": 15.99,
+        "tax": 108.8,
+        "discount": 50.0,
+        "total": 1434.76,
+        "currency": "USD"
+      },
+      "discounts": [
+        {
+          "code": "WELCOME10",
+          "type": "percentage",
+          "value": 10,
+          "amount": 50.0,
+          "description": "Welcome discount"
+        }
+      ],
+      "payment": {
+        "method": "credit_card",
+        "card": {
+          "type": "Visa",
+          "lastFour": "1234",
+          "expiryMonth": 12,
+          "expiryYear": 2027
+        },
+        "transactionId": "TXN789012345",
+        "status": "completed",
+        "processedAt": "2025-07-25T14:30:00Z"
+      },
+      "shipping": {
+        "method": "standard",
+        "carrier": "UPS",
+        "trackingNumber": "1Z999AA1234567890",
+        "estimatedDelivery": "2025-07-30T18:00:00Z",
+        "actualDelivery": null,
+        "status": "shipped"
+      },
+      "status": {
+        "current": "shipped",
+        "history": [
+          {
+            "status": "pending",
+            "timestamp": "2025-07-25T14:30:00Z",
+            "note": "Order placed"
+          },
+          {
+            "status": "confirmed",
+            "timestamp": "2025-07-25T14:35:00Z",
+            "note": "Payment confirmed"
+          },
+          {
+            "status": "processing",
+            "timestamp": "2025-07-26T09:00:00Z",
+            "note": "Order being prepared"
+          },
+          {
+            "status": "shipped",
+            "timestamp": "2025-07-26T16:30:00Z",
+            "note": "Package shipped via UPS"
+          }
+        ]
+      },
+      "timestamps": {
+        "createdAt": "2025-07-25T14:30:00Z",
+        "updatedAt": "2025-07-26T16:30:00Z"
+      },
+      "notes": {
+        "customer": "Please leave package at front door if no one is home",
+        "internal": "Priority customer - expedite processing"
+      }
+    }
+  },
+
+  "practiceQuestions": [
+    {
+      "question": "What are the six data types supported by JSON?",
+      "answer": "String, Number, Boolean, null, Object, Array"
+    },
+    {
+      "question": "Can JSON contain comments?",
+      "answer": "No, JSON does not support comments"
+    },
+    {
+      "question": "What's the difference between JSON and JavaScript objects?",
+      "answer": "JSON requires double quotes for keys, doesn't support functions or undefined values, and is text-based. JavaScript objects can have unquoted keys, support functions, and are native objects."
+    },
+    {
+      "question": "How do you handle special characters in JSON strings?",
+      "answer": "Use escape sequences: \\\" for quotes, \\\\ for backslash, \\n for newline, \\t for tab, etc."
+    },
+    {
+      "question": "Can JSON keys be duplicated?",
+      "answer": "While JSON parsers may accept duplicate keys, it's not recommended as behavior is undefined. Only the last value is typically kept."
+    }
+  ],
+
+  "commonMistakes": [
+    {
+      "mistake": "Using single quotes instead of double quotes",
+      "wrong": "{'name': 'John'}",
+      "correct": "{\"name\": \"John\"}"
+    },
+    {
+      "mistake": "Trailing commas",
+      "wrong": "{\"name\": \"John\", \"age\": 30,}",
+      "correct": "{\"name\": \"John\", \"age\": 30}"
+    },
+    {
+      "mistake": "Using undefined values",
+      "wrong": "{\"value\": undefined}",
+      "correct": "{\"value\": null}"
+    },
+    {
+      "mistake": "Including functions",
+      "wrong": "{\"getName\": function() { return 'John'; }}",
+      "correct": "Functions are not allowed in JSON"
+    }
+  ]
+}

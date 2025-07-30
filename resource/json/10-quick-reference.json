@@ -1,0 +1,283 @@
+{
+  "title": "JSON Quick Reference & Cheat Sheet",
+  "description": "Quick reference guide for JSON syntax, methods, and common patterns",
+
+  "basicSyntax": {
+    "dataTypes": {
+      "string": "\"Hello World\"",
+      "number": "42, 3.14, -10, 1.5e-10",
+      "boolean": "true, false",
+      "null": "null",
+      "object": "{\"key\": \"value\"}",
+      "array": "[1, 2, 3]"
+    },
+    "rules": [
+      "Data is in name/value pairs",
+      "Data is separated by commas",
+      "Curly braces hold objects",
+      "Square brackets hold arrays",
+      "Strings must use double quotes",
+      "No trailing commas allowed",
+      "No comments allowed in pure JSON"
+    ],
+    "structure": {
+      "object": "{\n  \"property1\": \"value1\",\n  \"property2\": \"value2\"\n}",
+      "array": "[\n  \"item1\",\n  \"item2\",\n  \"item3\"\n]",
+      "nested": "{\n  \"user\": {\n    \"name\": \"John\",\n    \"hobbies\": [\"reading\", \"coding\"]\n  }\n}"
+    }
+  },
+
+  "commonPatterns": {
+    "userProfile": {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john@example.com",
+      "age": 30,
+      "address": {
+        "street": "123 Main St",
+        "city": "New York",
+        "country": "USA"
+      },
+      "hobbies": ["reading", "coding", "traveling"]
+    },
+    "apiResponse": {
+      "success": true,
+      "message": "Data retrieved successfully",
+      "data": {
+        "users": [
+          { "id": 1, "name": "Alice" },
+          { "id": 2, "name": "Bob" }
+        ]
+      },
+      "meta": {
+        "total": 2,
+        "page": 1,
+        "limit": 10
+      }
+    },
+    "configuration": {
+      "app": {
+        "name": "My Application",
+        "version": "1.0.0",
+        "debug": true
+      },
+      "database": {
+        "host": "localhost",
+        "port": 5432,
+        "name": "myapp_db"
+      },
+      "features": {
+        "authentication": true,
+        "logging": true,
+        "caching": false
+      }
+    }
+  },
+
+  "javascriptMethods": {
+    "parsing": {
+      "method": "JSON.parse()",
+      "syntax": "JSON.parse(text[, reviver])",
+      "examples": [
+        "JSON.parse('{\"name\":\"John\"}')",
+        "JSON.parse('[1,2,3]')",
+        "JSON.parse('\"hello\"')",
+        "JSON.parse('true')",
+        "JSON.parse('null')"
+      ],
+      "errorHandling": "try {\n  const obj = JSON.parse(jsonString);\n} catch (error) {\n  console.error('Invalid JSON:', error.message);\n}"
+    },
+    "stringifying": {
+      "method": "JSON.stringify()",
+      "syntax": "JSON.stringify(value[, replacer[, space]])",
+      "examples": [
+        "JSON.stringify({name: 'John'})",
+        "JSON.stringify([1, 2, 3])",
+        "JSON.stringify('hello')",
+        "JSON.stringify(true)",
+        "JSON.stringify(null)"
+      ],
+      "formatting": {
+        "prettyPrint": "JSON.stringify(obj, null, 2)",
+        "compact": "JSON.stringify(obj)",
+        "filtered": "JSON.stringify(obj, ['name', 'age'])"
+      }
+    }
+  },
+
+  "validationChecklist": [
+    "✓ Proper quotes: Use double quotes for strings",
+    "✓ No trailing commas: Last item shouldn't have comma",
+    "✓ Balanced brackets: Every { has } and every [ has ]",
+    "✓ Escaped characters: Use \\ for special characters",
+    "✓ Valid data types: Only string, number, boolean, null, object, array",
+    "✓ No undefined: Use null instead of undefined",
+    "✓ No functions: JSON doesn't support function values",
+    "✓ No comments: Pure JSON doesn't allow comments"
+  ],
+
+  "commonErrors": {
+    "syntaxErrors": [
+      {
+        "error": "Trailing comma",
+        "wrong": "{\"name\": \"John\", \"age\": 30,}",
+        "correct": "{\"name\": \"John\", \"age\": 30}"
+      },
+      {
+        "error": "Single quotes",
+        "wrong": "{'name': 'John'}",
+        "correct": "{\"name\": \"John\"}"
+      },
+      {
+        "error": "Unquoted keys",
+        "wrong": "{name: \"John\"}",
+        "correct": "{\"name\": \"John\"}"
+      },
+      {
+        "error": "Comments",
+        "wrong": "{\n  // This is a comment\n  \"name\": \"John\"\n}",
+        "correct": "{\"name\": \"John\"}"
+      }
+    ],
+    "dataErrors": [
+      {
+        "error": "Undefined value",
+        "wrong": "{\"name\": undefined}",
+        "correct": "{\"name\": null}"
+      },
+      {
+        "error": "Function value",
+        "wrong": "{\"fn\": function() {}}",
+        "correct": "{\"fn\": \"function_name\"}"
+      }
+    ]
+  },
+
+  "bestPractices": {
+    "naming": [
+      "Use camelCase for property names",
+      "Use descriptive names",
+      "Be consistent with naming conventions",
+      "Avoid special characters in names"
+    ],
+    "structure": [
+      "Keep nesting levels reasonable (max 3-4 levels)",
+      "Group related properties together",
+      "Use arrays for lists of similar items",
+      "Use objects for structured data"
+    ],
+    "performance": [
+      "Minimize JSON size for network transfer",
+      "Use appropriate data types",
+      "Consider pagination for large datasets",
+      "Cache parsed JSON when possible"
+    ],
+    "security": [
+      "Validate JSON input before processing",
+      "Sanitize user input",
+      "Use HTTPS for JSON APIs",
+      "Implement proper authentication"
+    ]
+  },
+
+  "toolsQuickRef": {
+    "validation": [
+      "JSONLint.com - Online validator",
+      "jq - Command line processor",
+      "Python: json.loads() with try/catch",
+      "JavaScript: JSON.parse() with try/catch"
+    ],
+    "formatting": [
+      "Online: JSONFormatter.org",
+      "VS Code: Format Document (Alt+Shift+F)",
+      "Command line: python -m json.tool",
+      "Node.js: JSON.stringify(obj, null, 2)"
+    ],
+    "conversion": [
+      "JSON to CSV: Various online tools",
+      "JSON to XML: Online converters",
+      "JSON to YAML: js-yaml library",
+      "JSON to Classes: quicktype.io"
+    ]
+  },
+
+  "apiPatterns": {
+    "restfulResponses": {
+      "success": {
+        "status": 200,
+        "success": true,
+        "data": {},
+        "message": "Operation successful"
+      },
+      "error": {
+        "status": 400,
+        "success": false,
+        "error": {
+          "code": "VALIDATION_ERROR",
+          "message": "Invalid input data",
+          "details": []
+        }
+      },
+      "pagination": {
+        "data": [],
+        "pagination": {
+          "page": 1,
+          "limit": 10,
+          "total": 100,
+          "pages": 10
+        }
+      }
+    },
+    "requestFormats": {
+      "create": {
+        "method": "POST",
+        "body": {
+          "name": "New Item",
+          "description": "Item description"
+        }
+      },
+      "update": {
+        "method": "PUT",
+        "body": {
+          "id": 1,
+          "name": "Updated Item",
+          "description": "Updated description"
+        }
+      },
+      "search": {
+        "method": "GET",
+        "query": {
+          "q": "search term",
+          "page": 1,
+          "limit": 10,
+          "sort": "name",
+          "order": "asc"
+        }
+      }
+    }
+  },
+
+  "quickTips": [
+    "Always validate JSON before parsing",
+    "Use proper error handling for JSON operations",
+    "Pretty print JSON for debugging",
+    "Use schema validation for complex data",
+    "Keep JSON structure as flat as possible",
+    "Use meaningful property names",
+    "Consider file size for large JSON datasets",
+    "Use appropriate HTTP status codes with JSON APIs",
+    "Implement proper authentication for JSON APIs",
+    "Cache JSON data when appropriate"
+  ],
+
+  "commonUseCase": {
+    "configuration": "Store app settings and preferences",
+    "dataExchange": "Transfer data between client and server",
+    "apis": "RESTful API request and response format",
+    "storage": "Store structured data in files or databases",
+    "logging": "Structure log entries with metadata",
+    "testing": "Mock data for testing applications",
+    "documentation": "API documentation and examples",
+    "migration": "Data migration between different systems"
+  }
+}

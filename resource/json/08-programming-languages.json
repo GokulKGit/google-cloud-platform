@@ -1,0 +1,172 @@
+{
+  "title": "JSON with Programming Languages",
+  "description": "How to work with JSON in different programming languages",
+
+  "javascript": {
+    "parsing": {
+      "description": "Converting JSON string to JavaScript object",
+      "method": "JSON.parse()",
+      "example": "const obj = JSON.parse('{\"name\": \"John\", \"age\": 30}');",
+      "error_handling": "try { const obj = JSON.parse(jsonString); } catch (error) { console.error('Invalid JSON:', error); }"
+    },
+    "stringifying": {
+      "description": "Converting JavaScript object to JSON string",
+      "method": "JSON.stringify()",
+      "example": "const jsonString = JSON.stringify({name: 'John', age: 30});",
+      "options": {
+        "replacer": "JSON.stringify(obj, null, 2) // Pretty print with 2 spaces",
+        "space": "JSON.stringify(obj, ['name', 'age']) // Only include specific properties"
+      }
+    },
+    "examples": [
+      {
+        "title": "Basic parsing and stringifying",
+        "code": "// Parse JSON\nconst user = JSON.parse('{\"name\": \"Alice\", \"age\": 25}');\nconsole.log(user.name); // Alice\n\n// Stringify object\nconst userJson = JSON.stringify(user);\nconsole.log(userJson); // {\"name\":\"Alice\",\"age\":25}"
+      },
+      {
+        "title": "Working with arrays",
+        "code": "const users = JSON.parse('[{\"name\": \"Alice\"}, {\"name\": \"Bob\"}]');\nusers.forEach(user => console.log(user.name));\n\nconst usersJson = JSON.stringify(users, null, 2);"
+      },
+      {
+        "title": "Fetch API with JSON",
+        "code": "// GET request\nfetch('/api/users')\n  .then(response => response.json())\n  .then(data => console.log(data));\n\n// POST request\nfetch('/api/users', {\n  method: 'POST',\n  headers: { 'Content-Type': 'application/json' },\n  body: JSON.stringify({ name: 'John', email: 'john@example.com' })\n})"
+      }
+    ]
+  },
+
+  "python": {
+    "library": "json (built-in module)",
+    "parsing": {
+      "description": "Converting JSON string to Python dict",
+      "method": "json.loads()",
+      "example": "import json\ndata = json.loads('{\"name\": \"John\", \"age\": 30}')"
+    },
+    "serializing": {
+      "description": "Converting Python object to JSON string",
+      "method": "json.dumps()",
+      "example": "import json\njson_string = json.dumps({'name': 'John', 'age': 30})"
+    },
+    "file_operations": {
+      "reading": "with open('data.json', 'r') as f:\n    data = json.load(f)",
+      "writing": "with open('data.json', 'w') as f:\n    json.dump(data, f, indent=2)"
+    },
+    "examples": [
+      {
+        "title": "Basic JSON operations",
+        "code": "import json\n\n# Parse JSON string\nuser_json = '{\"name\": \"Alice\", \"age\": 25, \"hobbies\": [\"reading\", \"coding\"]}'\nuser = json.loads(user_json)\nprint(user['name'])  # Alice\n\n# Convert to JSON\nuser_data = {'name': 'Bob', 'age': 30}\njson_string = json.dumps(user_data, indent=2)\nprint(json_string)"
+      },
+      {
+        "title": "Working with files",
+        "code": "import json\n\n# Read JSON file\nwith open('users.json', 'r') as file:\n    users = json.load(file)\n\n# Process data\nfor user in users:\n    print(f\"Name: {user['name']}, Age: {user['age']}\")\n\n# Write JSON file\nnew_users = [{'name': 'Charlie', 'age': 28}]\nwith open('new_users.json', 'w') as file:\n    json.dump(new_users, file, indent=2)"
+      },
+      {
+        "title": "Custom JSON encoder",
+        "code": "import json\nfrom datetime import datetime\n\nclass DateTimeEncoder(json.JSONEncoder):\n    def default(self, obj):\n        if isinstance(obj, datetime):\n            return obj.isoformat()\n        return super().default(obj)\n\ndata = {'timestamp': datetime.now(), 'message': 'Hello'}\njson_string = json.dumps(data, cls=DateTimeEncoder)\nprint(json_string)"
+      }
+    ]
+  },
+
+  "nodejs": {
+    "description": "Node.js uses the same JSON methods as browser JavaScript",
+    "parsing": "JSON.parse()",
+    "stringifying": "JSON.stringify()",
+    "file_operations": {
+      "reading_sync": "const fs = require('fs');\nconst data = JSON.parse(fs.readFileSync('data.json', 'utf8'));",
+      "reading_async": "const fs = require('fs').promises;\nconst data = JSON.parse(await fs.readFile('data.json', 'utf8'));",
+      "writing_sync": "fs.writeFileSync('data.json', JSON.stringify(data, null, 2));",
+      "writing_async": "await fs.writeFile('data.json', JSON.stringify(data, null, 2));"
+    },
+    "examples": [
+      {
+        "title": "Express.js API with JSON",
+        "code": "const express = require('express');\nconst app = express();\n\napp.use(express.json()); // Parse JSON bodies\n\napp.get('/api/users', (req, res) => {\n  const users = [{name: 'Alice', age: 25}];\n  res.json(users);\n});\n\napp.post('/api/users', (req, res) => {\n  const user = req.body;\n  console.log('Received:', user);\n  res.json({success: true, user});\n});"
+      },
+      {
+        "title": "Reading configuration",
+        "code": "const fs = require('fs');\n\n// Read config file\nconst config = JSON.parse(fs.readFileSync('config.json', 'utf8'));\n\n// Use configuration\nconst server = {\n  host: config.server.host,\n  port: config.server.port\n};\n\nconsole.log(`Server starting on ${server.host}:${server.port}`);"
+      }
+    ]
+  },
+
+  "java": {
+    "libraries": ["Jackson", "Gson", "org.json"],
+    "jackson_examples": [
+      {
+        "title": "Basic Jackson usage",
+        "code": "import com.fasterxml.jackson.databind.ObjectMapper;\n\npublic class JsonExample {\n    public static void main(String[] args) throws Exception {\n        ObjectMapper mapper = new ObjectMapper();\n        \n        // Object to JSON\n        User user = new User(\"John\", 30);\n        String json = mapper.writeValueAsString(user);\n        \n        // JSON to Object\n        User parsedUser = mapper.readValue(json, User.class);\n    }\n}\n\nclass User {\n    public String name;\n    public int age;\n    \n    public User() {}\n    public User(String name, int age) {\n        this.name = name;\n        this.age = age;\n    }\n}"
+      }
+    ],
+    "gson_examples": [
+      {
+        "title": "Basic Gson usage",
+        "code": "import com.google.gson.Gson;\n\npublic class GsonExample {\n    public static void main(String[] args) {\n        Gson gson = new Gson();\n        \n        // Object to JSON\n        User user = new User(\"Alice\", 25);\n        String json = gson.toJson(user);\n        \n        // JSON to Object\n        User parsedUser = gson.fromJson(json, User.class);\n    }\n}"
+      }
+    ]
+  },
+
+  "csharp": {
+    "library": "System.Text.Json (built-in) or Newtonsoft.Json",
+    "system_text_json": [
+      {
+        "title": "Using System.Text.Json",
+        "code": "using System.Text.Json;\n\npublic class Program\n{\n    public static void Main()\n    {\n        // Object to JSON\n        var user = new { Name = \"John\", Age = 30 };\n        string json = JsonSerializer.Serialize(user);\n        \n        // JSON to Object\n        var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };\n        var parsedUser = JsonSerializer.Deserialize<User>(json, options);\n    }\n}\n\npublic class User\n{\n    public string Name { get; set; }\n    public int Age { get; set; }\n}"
+      }
+    ],
+    "newtonsoft": [
+      {
+        "title": "Using Newtonsoft.Json",
+        "code": "using Newtonsoft.Json;\n\npublic class Program\n{\n    public static void Main()\n    {\n        // Object to JSON\n        var user = new User { Name = \"Alice\", Age = 25 };\n        string json = JsonConvert.SerializeObject(user, Formatting.Indented);\n        \n        // JSON to Object\n        User parsedUser = JsonConvert.DeserializeObject<User>(json);\n    }\n}"
+      }
+    ]
+  },
+
+  "php": {
+    "functions": ["json_encode()", "json_decode()"],
+    "examples": [
+      {
+        "title": "Basic PHP JSON operations",
+        "code": "<?php\n// Array to JSON\n$user = array('name' => 'John', 'age' => 30);\n$json = json_encode($user);\necho $json; // {\"name\":\"John\",\"age\":30}\n\n// JSON to array\n$userData = json_decode($json, true); // true for associative array\necho $userData['name']; // John\n\n// JSON to object\n$userObject = json_decode($json); // false for object (default)\necho $userObject->name; // John\n?>"
+      },
+      {
+        "title": "Working with files",
+        "code": "<?php\n// Read JSON file\n$jsonString = file_get_contents('users.json');\n$users = json_decode($jsonString, true);\n\n// Process data\nforeach ($users as $user) {\n    echo \"Name: \" . $user['name'] . \", Age: \" . $user['age'] . \"\\n\";\n}\n\n// Write JSON file\n$newUsers = array(\n    array('name' => 'Alice', 'age' => 25),\n    array('name' => 'Bob', 'age' => 30)\n);\nfile_put_contents('new_users.json', json_encode($newUsers, JSON_PRETTY_PRINT));\n?>"
+      }
+    ]
+  },
+
+  "bestPractices": {
+    "validation": {
+      "description": "Always validate JSON data before processing",
+      "javascript": "try { JSON.parse(jsonString); } catch (e) { /* handle error */ }",
+      "python": "try: json.loads(json_string)\nexcept json.JSONDecodeError: # handle error"
+    },
+    "errorHandling": {
+      "description": "Implement proper error handling for JSON operations",
+      "tips": [
+        "Use try-catch blocks for parsing",
+        "Validate data structure after parsing",
+        "Check for required fields",
+        "Handle type mismatches gracefully"
+      ]
+    },
+    "performance": {
+      "description": "Optimize JSON operations for better performance",
+      "tips": [
+        "Use streaming parsers for large JSON files",
+        "Avoid parsing the same JSON multiple times",
+        "Use appropriate data types",
+        "Consider using binary formats for large datasets"
+      ]
+    },
+    "security": {
+      "description": "Security considerations when working with JSON",
+      "tips": [
+        "Validate input data",
+        "Sanitize user input",
+        "Use HTTPS for JSON APIs",
+        "Implement rate limiting",
+        "Avoid eval() with JSON data"
+      ]
+    }
+  }
+}

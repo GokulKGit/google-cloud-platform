@@ -1,0 +1,62 @@
+{
+  "title": "Basic JSON Examples",
+  "description": "Simple examples to understand JSON structure",
+
+  "basicString": "Hello, World!",
+  "basicNumber": 42,
+  "basicFloat": 3.14159,
+  "basicBoolean": true,
+  "basicNull": null,
+
+  "simpleObject": {
+    "name": "Alice",
+    "age": 25,
+    "isStudent": false
+  },
+
+  "simpleArray": ["apple", "banana", "cherry"],
+
+  "numberArray": [1, 2, 3, 4, 5],
+
+  "mixedArray": [
+    "text",
+    123,
+    true,
+    null,
+    {
+      "nested": "object"
+    }
+  ],
+
+  "person": {
+    "firstName": "John",
+    "lastName": "Doe",
+    "age": 30,
+    "email": "john.doe@example.com",
+    "isEmployed": true,
+    "spouse": null
+  },
+
+  "colors": {
+    "primary": ["red", "blue", "yellow"],
+    "secondary": ["green", "orange", "purple"],
+    "neutral": ["black", "white", "gray"]
+  },
+
+  "settings": {
+    "theme": "dark",
+    "notifications": {
+      "email": true,
+      "push": false,
+      "sms": true
+    },
+    "language": "en",
+    "timezone": "UTC"
+  },
+
+  "emptyExamples": {
+    "emptyObject": {},
+    "emptyArray": [],
+    "emptyString": ""
+  }
+}

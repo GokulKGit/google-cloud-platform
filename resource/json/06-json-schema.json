@@ -1,0 +1,455 @@
+{
+  "title": "JSON Schema Examples",
+  "description": "JSON Schema for data validation and documentation",
+
+  "userSchema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://example.com/user.schema.json",
+    "title": "User",
+    "description": "A user in the system",
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^user_[a-zA-Z0-9]+$",
+        "description": "Unique identifier for the user"
+      },
+      "username": {
+        "type": "string",
+        "minLength": 3,
+        "maxLength": 30,
+        "pattern": "^[a-zA-Z0-9_]+$",
+        "description": "User's username"
+      },
+      "email": {
+        "type": "string",
+        "format": "email",
+        "description": "User's email address"
+      },
+      "age": {
+        "type": "integer",
+        "minimum": 13,
+        "maximum": 120,
+        "description": "User's age"
+      },
+      "isActive": {
+        "type": "boolean",
+        "description": "Whether the user account is active"
+      },
+      "roles": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": ["user", "admin", "moderator", "premium"]
+        },
+        "uniqueItems": true,
+        "minItems": 1,
+        "description": "User's roles in the system"
+      },
+      "profile": {
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 50
+          },
+          "lastName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 50
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "format": "date"
+          },
+          "avatar": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "required": ["firstName", "lastName"],
+        "additionalProperties": false
+      },
+      "createdAt": {
+        "type": "string",
+        "format": "date-time",
+        "description": "When the user was created"
+      },
+      "lastLoginAt": {
+        "type": ["string", "null"],
+        "format": "date-time",
+        "description": "When the user last logged in"
+      }
+    },
+    "required": ["id", "username", "email", "isActive", "roles", "createdAt"],
+    "additionalProperties": false
+  },
+
+  "productSchema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://example.com/product.schema.json",
+    "title": "Product",
+    "description": "A product in the e-commerce system",
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^prod_[a-zA-Z0-9]+$"
+      },
+      "name": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "description": {
+        "type": "string",
+        "maxLength": 1000
+      },
+      "price": {
+        "type": "object",
+        "properties": {
+          "amount": {
+            "type": "number",
+            "minimum": 0,
+            "multipleOf": 0.01
+          },
+          "currency": {
+            "type": "string",
+            "enum": ["USD", "EUR", "GBP", "JPY", "CAD"]
+          }
+        },
+        "required": ["amount", "currency"],
+        "additionalProperties": false
+      },
+      "category": {
+        "type": "string",
+        "enum": ["Electronics", "Clothing", "Books", "Home", "Sports", "Beauty"]
+      },
+      "tags": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 50
+        },
+        "uniqueItems": true,
+        "maxItems": 10
+      },
+      "inventory": {
+        "type": "object",
+        "properties": {
+          "stock": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "reserved": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "available": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": ["stock", "available"],
+        "additionalProperties": false
+      },
+      "images": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "format": "uri"
+            },
+            "alt": {
+              "type": "string",
+              "maxLength": 200
+            },
+            "primary": {
+              "type": "boolean"
+            }
+          },
+          "required": ["url", "alt"],
+          "additionalProperties": false
+        },
+        "minItems": 1,
+        "maxItems": 10
+      },
+      "isActive": {
+        "type": "boolean"
+      },
+      "createdAt": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "updatedAt": {
+        "type": "string",
+        "format": "date-time"
+      }
+    },
+    "required": [
+      "id",
+      "name",
+      "price",
+      "category",
+      "inventory",
+      "isActive",
+      "createdAt"
+    ],
+    "additionalProperties": false
+  },
+
+  "apiResponseSchema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://example.com/api-response.schema.json",
+    "title": "API Response",
+    "description": "Standard API response format",
+    "type": "object",
+    "properties": {
+      "status": {
+        "type": "string",
+        "enum": ["success", "error", "warning"]
+      },
+      "statusCode": {
+        "type": "integer",
+        "minimum": 100,
+        "maximum": 599
+      },
+      "message": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 500
+      },
+      "data": {
+        "description": "Response data - can be any type"
+      },
+      "errors": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "field": {
+              "type": "string"
+            },
+            "code": {
+              "type": "string",
+              "enum": [
+                "REQUIRED",
+                "INVALID_FORMAT",
+                "OUT_OF_RANGE",
+                "DUPLICATE",
+                "NOT_FOUND"
+              ]
+            },
+            "message": {
+              "type": "string"
+            }
+          },
+          "required": ["code", "message"],
+          "additionalProperties": false
+        }
+      },
+      "meta": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "page": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          },
+          "totalPages": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "additionalProperties": true
+      },
+      "timestamp": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "requestId": {
+        "type": "string",
+        "pattern": "^req_[a-zA-Z0-9]+$"
+      }
+    },
+    "required": ["status", "statusCode", "timestamp"],
+    "additionalProperties": false,
+    "if": {
+      "properties": {
+        "status": {
+          "const": "error"
+        }
+      }
+    },
+    "then": {
+      "required": ["errors"]
+    },
+    "else": {
+      "required": ["data"]
+    }
+  },
+
+  "configurationSchema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://example.com/config.schema.json",
+    "title": "Application Configuration",
+    "description": "Configuration schema for the application",
+    "type": "object",
+    "properties": {
+      "server": {
+        "type": "object",
+        "properties": {
+          "host": {
+            "type": "string",
+            "format": "hostname"
+          },
+          "port": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 65535
+          },
+          "protocol": {
+            "type": "string",
+            "enum": ["http", "https"]
+          }
+        },
+        "required": ["host", "port", "protocol"],
+        "additionalProperties": false
+      },
+      "database": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["mysql", "postgresql", "mongodb", "sqlite"]
+          },
+          "host": {
+            "type": "string"
+          },
+          "port": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 65535
+          },
+          "username": {
+            "type": "string",
+            "minLength": 1
+          },
+          "password": {
+            "type": "string",
+            "minLength": 1
+          },
+          "database": {
+            "type": "string",
+            "minLength": 1
+          },
+          "ssl": {
+            "type": "boolean"
+          },
+          "pool": {
+            "type": "object",
+            "properties": {
+              "min": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "max": {
+                "type": "integer",
+                "minimum": 1
+              }
+            },
+            "required": ["min", "max"],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "type",
+          "host",
+          "port",
+          "username",
+          "password",
+          "database"
+        ],
+        "additionalProperties": false
+      },
+      "logging": {
+        "type": "object",
+        "properties": {
+          "level": {
+            "type": "string",
+            "enum": ["error", "warn", "info", "debug"]
+          },
+          "format": {
+            "type": "string",
+            "enum": ["json", "text"]
+          },
+          "outputs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": ["console", "file", "database"]
+            },
+            "uniqueItems": true,
+            "minItems": 1
+          }
+        },
+        "required": ["level", "outputs"],
+        "additionalProperties": false
+      },
+      "features": {
+        "type": "object",
+        "patternProperties": {
+          "^[a-zA-Z][a-zA-Z0-9_]*$": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "required": ["server", "database", "logging"],
+    "additionalProperties": false
+  },
+
+  "validationExamples": {
+    "validUser": {
+      "id": "user_123456",
+      "username": "johndoe2025",
+      "email": "john@example.com",
+      "age": 30,
+      "isActive": true,
+      "roles": ["user", "premium"],
+      "profile": {
+        "firstName": "John",
+        "lastName": "Doe",
+        "dateOfBirth": "1994-05-15",
+        "avatar": "https://example.com/avatar.jpg"
+      },
+      "createdAt": "2025-01-15T10:30:00Z",
+      "lastLoginAt": "2025-07-25T14:22:00Z"
+    },
+    "invalidUser": {
+      "id": "invalid-id",
+      "username": "jo",
+      "email": "not-an-email",
+      "age": 150,
+      "isActive": "yes",
+      "roles": ["invalid-role"],
+      "profile": {
+        "firstName": "",
+        "invalidField": "not allowed"
+      }
+    }
+  }
+}
